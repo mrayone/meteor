@@ -1,0 +1,17 @@
+{
+  "name": "meteor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": "true",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "author": "Maycon Rayone <maycon.rayone@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.9.7",
+    "@meteor/eslint-config": "*"
+  }
+}
