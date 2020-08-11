@@ -1,14 +1,20 @@
 syntax = "proto3";
 
+service UserService {
+  rpc getUserById(GetUserByIdRequest) returns (UserResponse){};
+  rpc registerUser(RegisterUserRequest) returns (UserResponse){};
+  rpc loginUser(LoginUserRequest) returns (LoginResponse){};
+}
+
 message User {
-  int32 id = 1;
+  string id = 1;
   string email = 2;
   string username = 3;
   string password = 4;
 }
 
 message GetUserByIdRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message UserResponse {
@@ -25,11 +31,4 @@ message LoginUserRequest {
 
 message LoginResponse {
   string token = 1;
-}
-
-
-service UserService {
-    rpc getUserById(GetUserByIdRequest) returns (UserResponse);
-    rpc registerUser(RegisterUserRequest) returns (UserResponse);
-    rpc loginUser(LoginUserRequest) returns (LoginResponse);
 }

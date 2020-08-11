@@ -1,17 +1,28 @@
 import { Request, Response } from 'express';
-import { promisify } from 'util';
 import HidraService from '../services/hidra';
 
 class SessionController {
   public async store(request: Request, response: Response): Promise<Response> {
     const { email, password } = request.body;
-
-    console.log(email, password);
-    const response = await promisify(HidraService.loginUser)({
-      email,
-      password,
+    const token = await new Promise((resolve, reject) => {
+      HidraService.loginUser(
+        {
+          user: { email, password },
+        },
+        (err, token) => {
+          if (err) {
+            console.error(err);
+            reject(err);
+            throw Error(err);
+          }
+          if (token) {
+            resolve(token);
+          }
+        },
+      );
     });
-    return response.json(response);
+
+    return response.json(token);
   }
 }
 

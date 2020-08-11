@@ -3,7 +3,7 @@ import { hash, compare } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const UserSchema = new mongoose.Schema({
-  id: Number,
+  id: String,
   email: String,
   username: String,
   password: String,
@@ -24,8 +24,8 @@ UserSchema.methods = {
 
 UserSchema.statics = {
   generateToken({ id }) {
-    return jwt.sign({ id }, 'ad1495e050e736bac0b04e1b1141edba', {
-      expiresIn: '7d',
+    return jwt.sign({ id }, 'banana', {
+      expiresIn: 84700,
     });
   },
 };

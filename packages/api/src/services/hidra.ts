@@ -9,8 +9,8 @@ const hidraDef = protoLoader.loadSync(
 );
 
 const hidra = grpc.loadPackageDefinition(hidraDef);
-
-const hidraClient = new hidra.UserService(
+const UserService = hidra.UserService;
+const hidraClient = new UserService(
   'localhost:3334',
   grpc.credentials.createInsecure(),
 );

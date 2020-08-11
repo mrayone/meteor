@@ -18,5 +18,5 @@ const packageDefinition = protoLoader.loadSync(
 const proto = grpc.loadPackageDefinition(packageDefinition);
 const server = new grpc.Server();
 server.addService(proto.UserService.service, implementation);
-server.bind('0.0.0.0:3334', grpc.ServerCredentials.createInsecure());
+server.bind('127.0.0.1:3334', grpc.ServerCredentials.createInsecure());
 server.start();
